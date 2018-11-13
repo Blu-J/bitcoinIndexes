@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "proxy": "micro-proxy -r proxyRules.json -p 9000"
+    "start": "next start"
   },
   "dependencies": {
     "@material-ui/core": "^3.4.0",

@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 import matches from "ts-matches";
 import { Order } from "../types";
-import { number } from "prop-types";
 
 const myMatches = (() => {
   const pair = matches.tuple([matches.string, matches.string, matches.string]);

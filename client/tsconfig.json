@@ -13,5 +13,6 @@
     "strict": true,
     "target": "es2016"
   },
-  "include": ["types/**/*.d.ts"]
+  "include": ["types/**/*.d.ts"],
+  "exclude": ["**/*/node_modules"]
 }

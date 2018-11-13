@@ -7,6 +7,11 @@ const server = new GraphQLServer({
   typeDefs: schema,
   resolvers: resolvers as any
 });
-server.start(() => console.log("🚀 Server is running on localhost:4000"));
+server.start(
+  {
+    endpoint: "/graphql"
+  },
+  () => console.log("🚀 Server is running on localhost:4000")
+);
 
 export default server;
