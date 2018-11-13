@@ -1,11 +1,7 @@
 import * as React from "react";
 import gql from "graphql-tag";
-import { Query } from "react-apollo";
-import dynamic from "next/dynamic";
-import { PlotParams } from "react-plotly.js";
-import { Column, Table } from "react-virtualized";
 import matches from "ts-matches";
-import withHooks, { useReducer } from "react-with-hooks";
+import withHooks, { useReducer, useState, useEffect } from "react-with-hooks";
 import Head from "next/head";
 import Grid from "@material-ui/core/Grid";
 import Select from "@material-ui/core/Select";
@@ -18,19 +14,10 @@ import {
   Checkbox,
   ListItemText
 } from "@material-ui/core";
-
-export const matchOrder = matches.shape({
-  price: matches.number,
-  amount: matches.number,
-  type: matches.some(matches.literal("bid"), matches.literal("ask")),
-  serverName: matches.string
-});
-
-type Order = typeof matchOrder._TYPE;
-
-const Plot = dynamic<PlotParams>(import("../Components/plotly") as any, {
-  ssr: false
-});
+import { Order, matchOrder } from "../lib/Order";
+import OrderTable from "../Components/OrderTable";
+import OrderChart from "../Components/OrderChart";
+import useQuery from "../lib/useQuery";
 
 const QUERY = gql`
   query Orders($market: String!, $exchanges: [String]!) {
@@ -80,8 +67,19 @@ const defaultState: State = {
 const reducer = (state: State, update: (state: State) => void | State) => {
   return produce(state, update);
 };
+
 export default withHooks(function Index() {
   const [state, update] = useReducer(reducer, defaultState);
+  const query = useQuery(QUERY, state);
+  const data = query.data || {
+    orders: []
+  };
+  const orders: Order[] = matches
+    .shape({ orders: matches.arrayOf(matchOrder) })
+    .unsafeCast(data).orders;
+
+  const asks = orders.filter(x => x.type === "ask");
+  const bids = orders.filter(x => x.type === "bid");
   return (
     <>
       <Head>
@@ -137,132 +135,18 @@ export default withHooks(function Index() {
             </Select>
           </FormControl>
         </Grid>
-        <Query
-          query={QUERY}
-          variables={{
-            market: state.market,
-            exchanges: state.exchanges
-          }}
-        >
-          {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :({JSON.stringify(error, null, 2)}</p>;
-            console;
-            const orders: Order[] = matches
-              .shape({ orders: matches.arrayOf(matchOrder) })
-              .unsafeCast(data).orders;
-
-            const asks = orders.filter(x => x.type === "ask");
-            const bids = orders.filter(x => x.type === "bid");
-            type GroupPair = [string, Order[]];
-            return (
-              <>
-                <Grid item xs={6}>
-                  <Plot
-                    data={asks
-                      .reduce((acc: GroupPair[], order) => {
-                        const index = acc
-                          .map(([a]) => a)
-                          .indexOf(order.serverName);
-                        if (index < 0) {
-                          return [...acc, [order.serverName, [order]]] as any;
-                        }
-                        acc[index][1].push(order);
-                        return acc;
-                      }, [])
-                      .map(([key, orders]: GroupPair) => ({
-                        x: orders.map(x => x.price),
-                        y: orders.map(x => x.amount),
-                        name: key,
-                        type: "bar"
-                      }))}
-                    layout={{
-                      title: "Asks",
-                      barmode: "relative",
-                      yaxis: {
-                        type: "log",
-                        title: "Amount"
-                      },
-                      xaxis: {
-                        title: "Price"
-                      }
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <Plot
-                    data={bids
-                      .reduce((acc: GroupPair[], order) => {
-                        const index = acc
-                          .map(([a]) => a)
-                          .indexOf(order.serverName);
-                        if (index === -1) {
-                          return [...acc, [order.serverName, [order]]] as any;
-                        }
-                        acc[index][1].push(order);
-                        return acc;
-                      }, [])
-                      .map(([key, orders]: GroupPair) => ({
-                        x: orders.map(x => x.price),
-                        y: orders.map(x => x.amount),
-                        name: key,
-                        type: "bar"
-                      }))}
-                    layout={{
-                      title: "Bids",
-                      barmode: "relative",
-                      yaxis: {
-                        type: "log",
-                        title: "Amount"
-                      },
-                      xaxis: {
-                        title: "Price"
-                      }
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <h1>Asks Table</h1>
-                  <Table
-                    width={600}
-                    height={500}
-                    headerHeight={30}
-                    rowHeight={50}
-                    rowCount={bids.length}
-                    rowGetter={({ index }: { index: number }) => bids[index]}
-                  >
-                    <Column label="Rate" dataKey="price" width={300} />
-                    <Column label="Amount" dataKey="amount" width={300} />
-                    <Column
-                      label="Exchange Name"
-                      dataKey="serverName"
-                      width={300}
-                    />
-                  </Table>
-                </Grid>
-                <Grid item xs={6}>
-                  <h1>Bids Table</h1>
-                  <Table
-                    width={600}
-                    height={500}
-                    headerHeight={30}
-                    rowHeight={50}
-                    rowCount={asks.length}
-                    rowGetter={({ index }: { index: number }) => asks[index]}
-                  >
-                    <Column label="Rate" dataKey="price" width={300} />
-                    <Column label="Amount" dataKey="amount" width={300} />
-                    <Column
-                      label="Exchange Name"
-                      dataKey="serverName"
-                      width={300}
-                    />
-                  </Table>
-                </Grid>
-              </>
-            );
-          }}
-        </Query>
+        {query.loading ? (
+          <p>Loading...</p>
+        ) : query.error ? (
+          <p>Error :({JSON.stringify(query.error, null, 2)}</p>
+        ) : (
+          <>
+            <OrderChart name="Asks" orders={asks} />
+            <OrderChart name="Bids" orders={bids} />
+            <OrderTable name="Asks Table" orders={asks} />
+            <OrderTable name="Bids Table" orders={bids} />
+          </>
+        )}
       </Grid>
     </>
   );

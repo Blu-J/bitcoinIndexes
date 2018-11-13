@@ -8,7 +8,7 @@ const server = new GraphQLServer({
   typeDefs: schema,
   resolvers: resolvers as any
 } as any);
-server.express.use(express.static("server/out"));
+server.express.use(express.static("out"));
 const port = process.env.PORT || 9000;
 server.start(
   {

@@ -4,10 +4,11 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "install": "tsc",
     "build": "tsc",
     "build-schema": "graphql-schema-typescript generate-ts --output src/generated-schema.ts src/schema",
-    "start": "yarn build; node ./dist/index.js",
-    "dev": "concurrently 'tsc -w' 'nodemon yarn start'",
+    "start": "yarn build && node ./dist/index.js",
+    "dev": "nodemon yarn start",
     "test": "jest"
   },
   "author": "",
@@ -52,7 +53,8 @@
   "nodemonConfig": {
     "watch": [
       "src/",
-      "dist/"
+      "dist/",
+      "out/"
     ]
   }
 }
