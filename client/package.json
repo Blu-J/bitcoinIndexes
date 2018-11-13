@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "install": "next build",
     "dev": "next",
     "build": "next build",
     "start": "next start"
