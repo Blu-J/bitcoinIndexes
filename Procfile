@@ -1,1 +1,1 @@
-web: yarn && yarn web
+web: yarn web

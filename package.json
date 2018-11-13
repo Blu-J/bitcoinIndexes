@@ -7,7 +7,7 @@
     "client:dev": "(cd client; yarn next)",
     "client:build": "(cd client; yarn next build)",
     "client:start": "(cd client; yarn next build && yarn next start)",
-    "proxy": "yarn wait-on tcp:3000 && yarn wait-on tcp:4000 && micro-proxy -r proxyRules.json -p $PORT",
+    "proxy": "micro-proxy -r proxyRules.json -p $PORT",
     "server:build": "(cd server; yarn tsc)",
     "server:start": "yarn server:build && node ./server/dist/index.js",
     "server:dev": "concurrently '(cd server; yarn tsc -w)' '(cd server; yarn nodemon yarn server:start)'",
