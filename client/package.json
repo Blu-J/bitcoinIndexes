@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "install": "next export && mv out ../server",
     "dev": "next",
     "build": "next build",
     "start": "next start"
