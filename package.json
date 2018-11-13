@@ -4,13 +4,8 @@
   "license": "MIT",
   "scripts": {
     "install": "(cd client; yarn) && (cd server; yarn)",
-    "client:dev": "(cd client; yarn next)",
-    "client:build": "(cd client; yarn next build)",
-    "client:start": "(cd client; yarn next build && yarn next start)",
-    "client:export": "(cd client; yarn next export && mv out ../server)",
-    "server:build": "(cd server; yarn tsc)",
+    "client:export": "(cd client; yarn export)",
     "server:start": "(cd server; yarn start)",
-    "server:dev": "concurrently '(cd server; yarn tsc -w)' '(cd server; yarn nodemon yarn server:start)'",
     "web": "yarn server:start"
   },
   "dependencies": {
