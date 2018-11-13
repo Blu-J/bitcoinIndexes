@@ -4,6 +4,7 @@ import * as poloniex from "./Books/poloniex";
 import * as gdax from "./Books/gdax";
 import * as gemini from "./Books/gemini";
 import matches from "ts-matches";
+import { flatten } from "./utils";
 
 const mServer = matches.some(
   matches.literal("poloniex"),
@@ -22,7 +23,6 @@ const orderBooks = {
   gdax: gdax.orderBook,
   gemini: gemini.orderBook
 };
-const flatMap = <A>(a: A[][]) => ([] as A[]).concat(...a);
 export async function orders(
   _: any,
   params: {
@@ -34,5 +34,5 @@ export async function orders(
   const allExchanges = await Promise.all(
     exchanges.filter(mServer.test).map(exchange => orderBooks[exchange](params))
   );
-  return flatMap<Order>(allExchanges);
+  return flatten<Order>(allExchanges);
 }

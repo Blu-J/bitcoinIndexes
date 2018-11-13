@@ -1,4 +1,5 @@
 import { Table, Column } from "react-virtualized";
+import { Order } from "../lib/Order";
 
 import Grid from "@material-ui/core/Grid";
 

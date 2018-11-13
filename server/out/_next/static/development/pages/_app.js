@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_4__);
 
-var _jsxFileName = "/Users/justin/projects/shapeshiftInterview/client/lib/withApolloClient.js";
+var _jsxFileName = "/home/jmiller/projects/bitcoinIndexes/client/lib/withApolloClient.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -1057,7 +1057,7 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 /*!************************************************!*\
   !*** ./node_modules/apollo-boost/lib/index.js ***!
   \************************************************/
-/*! exports provided: printAST, ObservableQuery, NetworkStatus, ApolloError, ApolloClient, gql, HttpLink, default, FetchType, createOperation, makePromise, toPromise, fromPromise, fromError, Observable, InMemoryCache, defaultDataIdFromObject, empty, from, split, concat, ApolloLink, execute, StoreReader, assertIdValue, WriteError, enhanceErrorWithDocument, StoreWriter, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, RecordingCache, record */
+/*! exports provided: gql, HttpLink, default, printAST, ObservableQuery, NetworkStatus, ApolloError, ApolloClient, createOperation, makePromise, toPromise, fromPromise, fromError, Observable, InMemoryCache, defaultDataIdFromObject, FetchType, empty, from, split, concat, ApolloLink, execute, StoreReader, assertIdValue, WriteError, enhanceErrorWithDocument, StoreWriter, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, RecordingCache, record */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34297,12 +34297,12 @@ module.exports = __webpack_require__(/*! ./dist/lib/head */ "./node_modules/next
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -35194,12 +35194,12 @@ process.umask = function() { return 0; };
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -35807,12 +35807,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -38287,12 +38287,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -40697,7 +40697,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_withApolloClient__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/withApolloClient */ "./lib/withApolloClient.js");
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-apollo */ "./node_modules/react-apollo/react-apollo.browser.umd.js");
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/justin/projects/shapeshiftInterview/client/pages/_app.tsx";
+var _jsxFileName = "/home/jmiller/projects/bitcoinIndexes/client/pages/_app.tsx";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -40805,14 +40805,14 @@ return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_914ba0988e9ac1f51996":
+/***/ "dll-reference dll_60313f63f09dd7757a58":
 /*!*******************************************!*\
-  !*** external "dll_914ba0988e9ac1f51996" ***!
+  !*** external "dll_60313f63f09dd7757a58" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_914ba0988e9ac1f51996;
+module.exports = dll_60313f63f09dd7757a58;
 
 /***/ })
 

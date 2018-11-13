@@ -27,12 +27,16 @@ const serverName = "bittrex";
 const URL = "https://bittrex.com/api/v1.1/public/getorderbook";
 const literal = <S extends string>(s: S) => s;
 export async function orderBook(params: { market: string }): Promise<Order[]> {
-  const rawResponse = await fetch(
-    `${URL}?market=BTC-${params.market}&type=both`
-  );
+  const url = `${URL}?market=BTC-${params.market}&type=both`;
+  const rawResponse = await fetch(url);
   const jsonResponse = await rawResponse.json();
   return myMatches.response.apply(jsonResponse).fold({
-    left: () => [],
+    left: error => {
+      console.warn(
+        `GDAX(${url}) has error ${error} with ${JSON.stringify(jsonResponse)}`
+      );
+      return [];
+    },
     right: parsedResponse => [
       ...parsedResponse.result.buy.map(({ Quantity: amount, Rate: price }) => ({
         price,

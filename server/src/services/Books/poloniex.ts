@@ -20,12 +20,20 @@ const URL = "https://poloniex.com/public";
 const literal = <S extends string>(s: S) => s;
 const serverName = literal("poloniex");
 export async function orderBook(params: { market: string }): Promise<Order[]> {
-  const rawResponse = await fetch(
-    `${URL}?command=returnOrderBook&currencyPair=BTC_${params.market}&depth=500`
-  );
+  const url = `${URL}?command=returnOrderBook&currencyPair=BTC_${
+    params.market
+  }&depth=500`;
+  const rawResponse = await fetch(url);
   const jsonResponse = await rawResponse.json();
   return myMatches.response.apply(jsonResponse).fold({
-    left: () => [],
+    left: error => {
+      console.warn(
+        `Poloniex(${url}) has error ${error} with ${JSON.stringify(
+          jsonResponse
+        )}`
+      );
+      return [];
+    },
     right: parsedResponse => [
       ...parsedResponse.asks.map(([rate, quantity]) => ({
         price: Number(rate),

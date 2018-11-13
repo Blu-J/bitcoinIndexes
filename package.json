@@ -6,10 +6,30 @@
     "install": "(cd client; yarn) && (cd server; yarn)",
     "client:export": "(cd client; yarn export)",
     "server:start": "(cd server; yarn start)",
-    "web": "yarn server:start"
+    "web": "yarn server:start",
+    "test": "yarn jest"
   },
   "dependencies": {
-    "concurrently": "4.0.1"
+    "@types/jest": "^23.3.9",
+    "concurrently": "4.0.1",
+    "fast-check": "^1.7.1",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.6"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "((/server/.*.spec.(jsx?|tsx?)$)|(/client/(Components|pages|lib).*.spec.(jsx?|tsx?)$))",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
   "devDependencies": {}
 }

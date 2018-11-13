@@ -20,10 +20,14 @@ const URL = (market: string) => `https://api.gemini.com/v1/book/${market}BTC`;
 const literal = <S extends string>(s: S) => s;
 const serverName = literal("gemini");
 export async function orderBook(params: { market: string }): Promise<Order[]> {
-  const rawResponse = await fetch(`${URL(params.market)}?level=3`);
+  const url = `${URL(params.market)}?level=3`;
+  const rawResponse = await fetch(url);
   const jsonResponse = await rawResponse.json();
   const output = myMatches.response.apply(jsonResponse).fold({
-    left: () => [],
+    left: (error) => {
+      console.warn(`Gemini(${url}) has error ${error} with ${JSON.stringify(jsonResponse)}`)
+      return []
+    },
     right: parsedResponse => {
       const bids = parsedResponse.bids;
       const asks = parsedResponse.asks;

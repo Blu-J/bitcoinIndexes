@@ -1,5 +1,246 @@
 ((window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
 
+/***/ "./Components/OrderChart.tsx":
+/*!***********************************!*\
+  !*** ./Components/OrderChart.tsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/Grid/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dynamic.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _OrderChart_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OrderChart.utils */ "./Components/OrderChart.utils.ts");
+var _jsxFileName = "/home/jmiller/projects/bitcoinIndexes/client/Components/OrderChart.tsx";
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var Plot = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../Components/plotly */ "./Components/plotly.ts")), {
+  ssr: false
+});
+
+var literal = function literal(s) {
+  return s;
+};
+
+var OrderChart = function OrderChart(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    item: true,
+    xs: 6,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Plot, {
+    data: Object(_OrderChart_utils__WEBPACK_IMPORTED_MODULE_3__["group"])(props.orders, function (o) {
+      return o.serverName;
+    }).map(function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 2),
+          key = _ref2[0],
+          orders = _ref2[1];
+
+      return {
+        x: orders.map(function (x) {
+          return x.price;
+        }),
+        y: orders.map(function (x) {
+          return x.amount;
+        }),
+        name: key,
+        type: literal("bar")
+      };
+    }),
+    layout: {
+      title: props.name,
+      barmode: "relative",
+      yaxis: {
+        type: "log",
+        title: "Amount"
+      },
+      xaxis: {
+        title: "Price"
+      }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (OrderChart);
+
+/***/ }),
+
+/***/ "./Components/OrderChart.utils.ts":
+/*!****************************************!*\
+  !*** ./Components/OrderChart.utils.ts ***!
+  \****************************************/
+/*! exports provided: group */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "group", function() { return group; });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var group = function group(values, getKey) {
+  return values.reduce(function (acc, a) {
+    var aKeyValue = getKey(a);
+    var index = acc.map(function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 1),
+          keyValue = _ref2[0];
+
+      return keyValue;
+    }).indexOf(aKeyValue);
+
+    if (index < 0) {
+      return _toConsumableArray(acc).concat([[aKeyValue, [a]]]);
+    }
+
+    acc[index][1].push(a);
+    return acc;
+  }, []);
+};
+
+/***/ }),
+
+/***/ "./Components/OrderTable.tsx":
+/*!***********************************!*\
+  !*** ./Components/OrderTable.tsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_virtualized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-virtualized */ "./node_modules/react-virtualized/dist/es/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/Grid/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/home/jmiller/projects/bitcoinIndexes/client/Components/OrderTable.tsx";
+
+
+
+
+var OrderTable = function OrderTable(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    item: true,
+    xs: 6,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, props.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_virtualized__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+    width: 600,
+    height: 500,
+    headerHeight: 30,
+    rowHeight: 50,
+    rowCount: props.orders.length,
+    rowGetter: function rowGetter(_ref) {
+      var index = _ref.index;
+      return props.orders[index];
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_virtualized__WEBPACK_IMPORTED_MODULE_1__["Column"], {
+    label: "Rate",
+    dataKey: "price",
+    width: 300,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_virtualized__WEBPACK_IMPORTED_MODULE_1__["Column"], {
+    label: "Amount",
+    dataKey: "amount",
+    width: 300,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_virtualized__WEBPACK_IMPORTED_MODULE_1__["Column"], {
+    label: "Exchange Name",
+    dataKey: "serverName",
+    width: 300,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (OrderTable);
+
+/***/ }),
+
+/***/ "./lib/Order.ts":
+/*!**********************!*\
+  !*** ./lib/Order.ts ***!
+  \**********************/
+/*! exports provided: matchOrder */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "matchOrder", function() { return matchOrder; });
+/* harmony import */ var ts_matches__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ts-matches */ "./node_modules/ts-matches/lib/matches.js");
+/* harmony import */ var ts_matches__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ts_matches__WEBPACK_IMPORTED_MODULE_0__);
+
+var matchOrder = ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.shape({
+  price: ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.number,
+  amount: ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.number,
+  type: ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.some(ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.literal("bid"), ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.literal("ask")),
+  serverName: ts_matches__WEBPACK_IMPORTED_MODULE_0___default.a.string
+});
+
+/***/ }),
+
 /***/ "./lib/initApollo.js":
 /*!***************************!*\
   !*** ./lib/initApollo.js ***!
@@ -52,6 +293,63 @@ function initApollo(initialState) {
   return apolloClient;
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./lib/useQuery.ts":
+/*!*************************!*\
+  !*** ./lib/useQuery.ts ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_with_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-with-hooks */ "./node_modules/react-with-hooks/lib/index.js");
+/* harmony import */ var react_with_hooks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_with_hooks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _initApollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./initApollo */ "./lib/initApollo.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var useQuery = function useQuery(query, variables) {
+  var _useState = Object(react_with_hooks__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    loading: true
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      updateState = _useState2[1];
+
+  Object(react_with_hooks__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    Object(_initApollo__WEBPACK_IMPORTED_MODULE_1__["default"])({}).query({
+      query: query,
+      variables: variables
+    }).then(function (goodValue) {
+      updateState({
+        loading: false,
+        data: goodValue.data
+      });
+    }, function (badValue) {
+      updateState({
+        loading: false,
+        error: String(badValue)
+      });
+    });
+    return function () {
+      return void 0;
+    };
+  }, [variables]);
+  return state;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (useQuery);
 
 /***/ }),
 
@@ -35988,7 +36286,7 @@ exports.default = _default;
 /*!************************************************!*\
   !*** ./node_modules/apollo-boost/lib/index.js ***!
   \************************************************/
-/*! exports provided: printAST, ObservableQuery, NetworkStatus, ApolloError, ApolloClient, gql, HttpLink, default, FetchType, createOperation, makePromise, toPromise, fromPromise, fromError, Observable, InMemoryCache, defaultDataIdFromObject, empty, from, split, concat, ApolloLink, execute, StoreReader, assertIdValue, WriteError, enhanceErrorWithDocument, StoreWriter, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, RecordingCache, record */
+/*! exports provided: gql, HttpLink, default, printAST, ObservableQuery, NetworkStatus, ApolloError, ApolloClient, createOperation, makePromise, toPromise, fromPromise, fromError, Observable, InMemoryCache, defaultDataIdFromObject, FetchType, empty, from, split, concat, ApolloLink, execute, StoreReader, assertIdValue, WriteError, enhanceErrorWithDocument, StoreWriter, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, RecordingCache, record */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73976,12 +74274,12 @@ exports.setNormalizedScrollLeft = setNormalizedScrollLeft;
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -77421,12 +77719,12 @@ process.umask = function() { return 0; };
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -78034,23 +78332,23 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -91550,12 +91848,12 @@ function withHooks(_render) {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_914ba0988e9ac1f51996 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_60313f63f09dd7757a58 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_914ba0988e9ac1f51996 */ "dll-reference dll_914ba0988e9ac1f51996"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_60313f63f09dd7757a58 */ "dll-reference dll_60313f63f09dd7757a58"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -93970,44 +94268,34 @@ if (hasSymbols()) {
 /*!*************************!*\
   !*** ./pages/index.tsx ***!
   \*************************/
-/*! exports provided: matchOrder, OrderChart, default */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "matchOrder", function() { return matchOrder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderChart", function() { return OrderChart; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dynamic.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_virtualized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-virtualized */ "./node_modules/react-virtualized/dist/es/index.js");
-/* harmony import */ var ts_matches__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ts-matches */ "./node_modules/ts-matches/lib/matches.js");
-/* harmony import */ var ts_matches__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(ts_matches__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_with_hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-with-hooks */ "./node_modules/react-with-hooks/lib/index.js");
-/* harmony import */ var react_with_hooks__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_with_hooks__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/head */ "./node_modules/next/head.js");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/Grid/index.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Select */ "./node_modules/@material-ui/core/Select/index.js");
-/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "./node_modules/@material-ui/core/MenuItem/index.js");
-/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! immer */ "./node_modules/immer/dist/immer.module.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/index.es.js");
-/* harmony import */ var _lib_initApollo__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../lib/initApollo */ "./lib/initApollo.js");
-var _jsxFileName = "/Users/justin/projects/shapeshiftInterview/client/pages/index.tsx";
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+/* harmony import */ var ts_matches__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ts-matches */ "./node_modules/ts-matches/lib/matches.js");
+/* harmony import */ var ts_matches__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ts_matches__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_with_hooks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-with-hooks */ "./node_modules/react-with-hooks/lib/index.js");
+/* harmony import */ var react_with_hooks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_with_hooks__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/head */ "./node_modules/next/head.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/Grid/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Select */ "./node_modules/@material-ui/core/Select/index.js");
+/* harmony import */ var _material_ui_core_Select__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "./node_modules/@material-ui/core/MenuItem/index.js");
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! immer */ "./node_modules/immer/dist/immer.module.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/index.es.js");
+/* harmony import */ var _lib_Order__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../lib/Order */ "./lib/Order.ts");
+/* harmony import */ var _Components_OrderTable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Components/OrderTable */ "./Components/OrderTable.tsx");
+/* harmony import */ var _Components_OrderChart__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Components/OrderChart */ "./Components/OrderChart.tsx");
+/* harmony import */ var _lib_useQuery__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../lib/useQuery */ "./lib/useQuery.ts");
+var _jsxFileName = "/home/jmiller/projects/bitcoinIndexes/client/pages/index.tsx";
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -94042,15 +94330,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var matchOrder = ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
-  price: ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.number,
-  amount: ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.number,
-  type: ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.some(ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.literal("bid"), ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.literal("ask")),
-  serverName: ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.string
-});
-var Plot = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../Components/plotly */ "./Components/plotly.ts")), {
-  ssr: false
-});
+
 var QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
 var Market;
 
@@ -94077,108 +94357,21 @@ var defaultState = {
 };
 
 var reducer = function reducer(state, update) {
-  return Object(immer__WEBPACK_IMPORTED_MODULE_10__["default"])(state, update);
+  return Object(immer__WEBPACK_IMPORTED_MODULE_8__["default"])(state, update);
 };
 
-var useQuery = function useQuery(query, variables) {
-  var _useState = Object(react_with_hooks__WEBPACK_IMPORTED_MODULE_5__["useState"])({
-    loading: true
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      updateState = _useState2[1];
-
-  Object(react_with_hooks__WEBPACK_IMPORTED_MODULE_5__["useEffect"])(function () {
-    Object(_lib_initApollo__WEBPACK_IMPORTED_MODULE_12__["default"])({}).query({
-      query: query,
-      variables: variables
-    }).then(function (goodValue) {
-      updateState({
-        loading: false,
-        data: goodValue.data
-      });
-    }, function (badValue) {
-      updateState({
-        loading: false,
-        error: String(badValue)
-      });
-    });
-    return function () {
-      return void 0;
-    };
-  }, [variables]);
-  return state;
-};
-
-var OrderChart = function OrderChart(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    item: true,
-    xs: 6,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 130
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Plot, {
-    data: props.orders.reduce(function (acc, order) {
-      var index = acc.map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 1),
-            a = _ref2[0];
-
-        return a;
-      }).indexOf(order.serverName);
-
-      if (index < 0) {
-        return _toConsumableArray(acc).concat([[order.serverName, [order]]]);
-      }
-
-      acc[index][1].push(order);
-      return acc;
-    }, []).map(function (_ref3) {
-      var _ref4 = _slicedToArray(_ref3, 2),
-          key = _ref4[0],
-          orders = _ref4[1];
-
-      return {
-        x: orders.map(function (x) {
-          return x.price;
-        }),
-        y: orders.map(function (x) {
-          return x.amount;
-        }),
-        name: key,
-        type: "bar"
-      };
-    }),
-    layout: {
-      title: props.name,
-      barmode: "relative",
-      yaxis: {
-        type: "log",
-        title: "Amount"
-      },
-      xaxis: {
-        title: "Price"
-      }
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 131
-    },
-    __self: this
-  }));
-};
-/* harmony default export */ __webpack_exports__["default"] = (react_with_hooks__WEBPACK_IMPORTED_MODULE_5___default()(function Index() {
-  var _useReducer = Object(react_with_hooks__WEBPACK_IMPORTED_MODULE_5__["useReducer"])(reducer, defaultState),
+/* harmony default export */ __webpack_exports__["default"] = (react_with_hooks__WEBPACK_IMPORTED_MODULE_3___default()(function Index() {
+  var _useReducer = Object(react_with_hooks__WEBPACK_IMPORTED_MODULE_3__["useReducer"])(reducer, defaultState),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
       update = _useReducer2[1];
 
-  var query = useQuery(QUERY, state);
-  var data = [];
-  console.log("Data is ", data);
-  var orders = ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.shape({
-    orders: ts_matches__WEBPACK_IMPORTED_MODULE_4___default.a.arrayOf(matchOrder)
+  var query = Object(_lib_useQuery__WEBPACK_IMPORTED_MODULE_13__["default"])(QUERY, state);
+  var data = query.data || {
+    orders: []
+  };
+  var orders = ts_matches__WEBPACK_IMPORTED_MODULE_2___default.a.shape({
+    orders: ts_matches__WEBPACK_IMPORTED_MODULE_2___default.a.arrayOf(_lib_Order__WEBPACK_IMPORTED_MODULE_10__["matchOrder"])
   }).unsafeCast(data).orders;
   var asks = orders.filter(function (x) {
     return x.type === "ask";
@@ -94186,16 +94379,16 @@ var OrderChart = function OrderChart(props) {
   var bids = orders.filter(function (x) {
     return x.type === "bid";
   });
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_head__WEBPACK_IMPORTED_MODULE_6___default.a, {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 175
+      lineNumber: 85
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 176
+      lineNumber: 86
     },
     __self: this
   }, "Bitcoin Books"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("link", {
@@ -94203,7 +94396,7 @@ var OrderChart = function OrderChart(props) {
     href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 177
+      lineNumber: 87
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("link", {
@@ -94211,26 +94404,26 @@ var OrderChart = function OrderChart(props) {
     href: "https://fonts.googleapis.com/icon?family=Material+Icons",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181
+      lineNumber: 91
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
     container: true,
     spacing: 24,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 186
+      lineNumber: 96
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
     item: true,
     xs: 6,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 187
+      lineNumber: 97
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_8___default.a, {
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_6___default.a, {
     value: state.market,
     onChange: function onChange(event) {
       return update(function (x) {
@@ -94239,45 +94432,45 @@ var OrderChart = function OrderChart(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 188
+      lineNumber: 98
     },
     __self: this
-  }, allMarkets.map(function (_ref5) {
-    var _ref6 = _slicedToArray(_ref5, 2),
-        name = _ref6[0],
-        market = _ref6[1];
+  }, allMarkets.map(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+        name = _ref2[0],
+        market = _ref2[1];
 
-    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7___default.a, {
       key: market,
       value: market,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 197
+        lineNumber: 107
       },
       __self: this
     }, name);
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
     item: true,
     xs: 6,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203
+      lineNumber: 113
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["FormControl"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["FormControl"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204
+      lineNumber: 114
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["InputLabel"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["InputLabel"], {
     htmlFor: "select-multiple-checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 205
+      lineNumber: 115
     },
     __self: this
-  }, "Exchanges"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_8___default.a, {
+  }, "Exchanges"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Select__WEBPACK_IMPORTED_MODULE_6___default.a, {
     multiple: true,
     value: state.exchanges,
     onChange: function onChange(element) {
@@ -94285,11 +94478,11 @@ var OrderChart = function OrderChart(props) {
         x.exchanges = element.target.value;
       });
     },
-    input: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["Input"], {
+    input: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Input"], {
       id: "select-multiple-checkbox",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 216
+        lineNumber: 126
       },
       __self: this
     }),
@@ -94298,233 +94491,82 @@ var OrderChart = function OrderChart(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208
+      lineNumber: 118
     },
     __self: this
-  }, allExchanges.map(function (_ref7) {
-    var _ref8 = _slicedToArray(_ref7, 2),
-        name = _ref8[0],
-        value = _ref8[1];
+  }, allExchanges.map(function (_ref3) {
+    var _ref4 = _slicedToArray(_ref3, 2),
+        name = _ref4[0],
+        value = _ref4[1];
 
-    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7___default.a, {
       key: name,
       value: value,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 220
+        lineNumber: 130
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["Checkbox"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["Checkbox"], {
       checked: state.exchanges.indexOf(value) > -1,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 221
+        lineNumber: 131
       },
       __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_11__["ListItemText"], {
+    }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core__WEBPACK_IMPORTED_MODULE_9__["ListItemText"], {
       primary: name,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 222
+        lineNumber: 132
       },
       __self: this
     }));
   })))), query.loading ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 229
+      lineNumber: 139
     },
     __self: this
   }, "Loading...") : query.error ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 231
+      lineNumber: 141
     },
     __self: this
-  }, "Error :(", JSON.stringify(query.error, null, 2)) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    item: true,
-    xs: 6,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 234
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](OrderChart, {
+  }, "Error :(", JSON.stringify(query.error, null, 2)) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_OrderChart__WEBPACK_IMPORTED_MODULE_12__["default"], {
     name: "Asks",
     orders: asks,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 235
+      lineNumber: 144
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](OrderChart, {
-    name: "Asks2",
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_OrderChart__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    name: "Bids",
+    orders: bids,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 145
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_OrderTable__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    name: "Asks Table",
     orders: asks,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 236
+      lineNumber: 146
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Plot, {
-    data: bids.reduce(function (acc, order) {
-      var index = acc.map(function (_ref9) {
-        var _ref10 = _slicedToArray(_ref9, 1),
-            a = _ref10[0];
-
-        return a;
-      }).indexOf(order.serverName);
-
-      if (index === -1) {
-        return _toConsumableArray(acc).concat([[order.serverName, [order]]]);
-      }
-
-      acc[index][1].push(order);
-      return acc;
-    }, []).map(function (_ref11) {
-      var _ref12 = _slicedToArray(_ref11, 2),
-          key = _ref12[0],
-          orders = _ref12[1];
-
-      return {
-        x: orders.map(function (x) {
-          return x.price;
-        }),
-        y: orders.map(function (x) {
-          return x.amount;
-        }),
-        name: key,
-        type: "bar"
-      };
-    }),
-    layout: {
-      title: "Bids",
-      barmode: "relative",
-      yaxis: {
-        type: "log",
-        title: "Amount"
-      },
-      xaxis: {
-        title: "Price"
-      }
-    },
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_OrderTable__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    name: "Bids Table",
+    orders: bids,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 237
+      lineNumber: 147
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    item: true,
-    xs: 6,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 266
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 267
-    },
-    __self: this
-  }, "Asks Table"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Table"], {
-    width: 600,
-    height: 500,
-    headerHeight: 30,
-    rowHeight: 50,
-    rowCount: bids.length,
-    rowGetter: function rowGetter(_ref13) {
-      var index = _ref13.index;
-      return bids[index];
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 268
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Column"], {
-    label: "Rate",
-    dataKey: "price",
-    width: 300,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 276
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Column"], {
-    label: "Amount",
-    dataKey: "amount",
-    width: 300,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 277
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Column"], {
-    label: "Exchange Name",
-    dataKey: "serverName",
-    width: 300,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 278
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7___default.a, {
-    item: true,
-    xs: 6,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 285
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 286
-    },
-    __self: this
-  }, "Bids Table"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Table"], {
-    width: 600,
-    height: 500,
-    headerHeight: 30,
-    rowHeight: 50,
-    rowCount: asks.length,
-    rowGetter: function rowGetter(_ref14) {
-      var index = _ref14.index;
-      return asks[index];
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 287
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Column"], {
-    label: "Rate",
-    dataKey: "price",
-    width: 300,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 295
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Column"], {
-    label: "Amount",
-    dataKey: "amount",
-    width: 300,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 296
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_virtualized__WEBPACK_IMPORTED_MODULE_3__["Column"], {
-    label: "Exchange Name",
-    dataKey: "serverName",
-    width: 300,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 297
-    },
-    __self: this
-  }))))));
+  }))));
 }));
     (function (Component, route) {
       if(!Component) return
@@ -94562,14 +94604,14 @@ return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_914ba0988e9ac1f51996":
+/***/ "dll-reference dll_60313f63f09dd7757a58":
 /*!*******************************************!*\
-  !*** external "dll_914ba0988e9ac1f51996" ***!
+  !*** external "dll_60313f63f09dd7757a58" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_914ba0988e9ac1f51996;
+module.exports = dll_60313f63f09dd7757a58;
 
 /***/ })
 
