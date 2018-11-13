@@ -9,7 +9,7 @@
     "client:start": "(cd client; yarn next build && yarn next start)",
     "client:export": "(cd client; yarn next export && mv out ../server)",
     "server:build": "(cd server; yarn tsc)",
-    "server:start": "yarn server:build && node ./server/dist/index.js",
+    "server:start": "(cd server; yarn start)",
     "server:dev": "concurrently '(cd server; yarn tsc -w)' '(cd server; yarn nodemon yarn server:start)'",
     "web": "yarn server:start"
   },
