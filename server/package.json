@@ -1,0 +1,59 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build-schema": "graphql-schema-typescript generate-ts --output src/generated-schema.ts src/schema",
+    "start": "yarn build; node ./dist/index.js",
+    "dev": "concurrently 'tsc -w' 'nodemon yarn start'",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "2.2.0",
+    "class-transformer": "0.2.0",
+    "gql": "1.1.2",
+    "graphql-schema-typescript": "1.2.8",
+    "graphql-yoga": "1.16.7",
+    "node-fetch": "2.2.1",
+    "reflect-metadata": "0.1.12",
+    "ts-matches": "3.2.1",
+    "typescript": "3.1.6"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.15",
+    "@types/jest": "^23.3.9",
+    "@types/node-fetch": "2.1.2",
+    "concurrently": "4.0.1",
+    "jest": "^23.6.0",
+    "nodemon": "1.18.6",
+    "supertest": "^3.3.0",
+    "ts-jest": "^23.10.4"
+  },
+  "resolutions": {
+    "graphql": "14.0.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "/src/.*.spec.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src/",
+      "dist/"
+    ]
+  }
+}
