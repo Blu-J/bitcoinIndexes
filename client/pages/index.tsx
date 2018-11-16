@@ -18,6 +18,7 @@ import { Order, matchOrder } from "../lib/Order";
 import OrderTable from "../Components/OrderTable";
 import OrderChart from "../Components/OrderChart";
 import useQuery from "../lib/useQuery";
+import { Query } from "react-apollo";
 
 const QUERY = gql`
   query Orders($market: String!, $exchanges: [String]!) {
@@ -68,9 +69,14 @@ const reducer = (state: State, update: (state: State) => void | State) => {
   return produce(state, update);
 };
 
-export default withHooks(function Index() {
-  const [state, update] = useReducer(reducer, defaultState);
-  const query = useQuery(QUERY, state);
+const WithData = withHooks(function WithData(properties: { queryArguments }) {
+  const query = useQuery(QUERY, properties.queryArguments);
+  if (query.loading) {
+    return <p>Loading...</p>;
+  }
+  if (query.error) {
+    return <p>Error :({JSON.stringify(query.error, null, 2)}</p>;
+  }
   const data = query.data || {
     orders: []
   };
@@ -80,6 +86,18 @@ export default withHooks(function Index() {
 
   const asks = orders.filter(x => x.type === "ask");
   const bids = orders.filter(x => x.type === "bid");
+  return (
+    <>
+      <OrderChart name="Asks" orders={asks} />
+      <OrderChart name="Bids" orders={bids} />
+      <OrderTable name="Asks Table" orders={asks} />
+      <OrderTable name="Bids Table" orders={bids} />
+    </>
+  );
+});
+
+export default withHooks(function Index() {
+  const [state, update] = useReducer(reducer, defaultState);
   return (
     <>
       <Head>
@@ -135,18 +153,7 @@ export default withHooks(function Index() {
             </Select>
           </FormControl>
         </Grid>
-        {query.loading ? (
-          <p>Loading...</p>
-        ) : query.error ? (
-          <p>Error :({JSON.stringify(query.error, null, 2)}</p>
-        ) : (
-          <>
-            <OrderChart name="Asks" orders={asks} />
-            <OrderChart name="Bids" orders={bids} />
-            <OrderTable name="Asks Table" orders={asks} />
-            <OrderTable name="Bids Table" orders={bids} />
-          </>
-        )}
+        <WithData queryArguments={state} />
       </Grid>
     </>
   );
