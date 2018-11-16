@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@types/jest": "^23.3.9",
-    "concurrently": "4.0.1",
     "fast-check": "^1.7.1",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.4",

@@ -7,6 +7,7 @@ const OrderTable = (props: { orders: Order[]; name: string }) => (
   <Grid item xs={6}>
     <h1>{props.name}</h1>
     <Table
+      className={`table-${props.name.toLowerCase()}`}
       width={600}
       height={500}
       headerHeight={30}

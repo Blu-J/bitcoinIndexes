@@ -38,7 +38,7 @@ enum Market {
 }
 
 const allMarkets: [string, Market][] = [
-  ["Ehtereum", Market.ETH],
+  ["Ethereum", Market.ETH],
   ["Doge Coin", Market.DOGE],
   ["Lite Coin", Market.LTC]
 ];
@@ -114,6 +114,8 @@ export default withHooks(function Index() {
       <Grid container spacing={24}>
         <Grid item xs={6}>
           <Select
+            name="market"
+            className="select-market"
             value={state.market}
             onChange={event =>
               update(x => {
@@ -134,6 +136,8 @@ export default withHooks(function Index() {
               Exchanges
             </InputLabel>
             <Select
+              name="exchange"
+              className="select-exchange"
               multiple
               value={state.exchanges}
               onChange={element =>

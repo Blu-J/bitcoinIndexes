@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next build &&next export && rm -rf ../server/out && cp -r out ../server/ && rm -rf out"
+    "export": "next build && next export && rm -rf ../server/out && cp -r out ../server/ && rm -rf out"
   },
   "dependencies": {
     "@material-ui/core": "^3.4.0",
