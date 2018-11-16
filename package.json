@@ -7,7 +7,7 @@
     "client:export": "(cd client; yarn export)",
     "server:start": "(cd server; yarn start)",
     "web": "yarn server:start",
-    "test": "yarn jest"
+    "test": "yarn jest && (cd integrationTesting && yarn install && yarn test)"
   },
   "dependencies": {
     "@types/jest": "^23.3.9",

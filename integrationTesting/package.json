@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "install": "(cd ../client && yarn install) && (cd ../server/ && yarn install)",
-    "run": "concurrently '(cd ../client && yarn export) && (cd ../server/ && yarn start)' 'wait-on tcp:9000 && cypress run'",
-    "open": "concurrently '(cd ../client && yarn export) && (cd ../server/ && yarn start)' 'wait-on tcp:9000 && cypress open'"
+    "test": "concurrently --kill-others '(cd ../client && yarn export) && (cd ../server/ && yarn start)' 'wait-on tcp:9000 && cypress run'",
+    "open": "concurrently --kill-others '(cd ../client && yarn export) && (cd ../server/ && yarn start)' 'wait-on tcp:9000 && cypress open'"
   },
   "dependencies": {
     "concurrently": "^4.0.1",

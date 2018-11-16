@@ -1,5 +1,9 @@
 # bitcoin indexes
 
+## Testing
+
+Just run the yarn test. Includes both some integration testing and some unit tests.
+
 ## Building
 
 1. `yarn`
