@@ -12,7 +12,9 @@
   "dependencies": {
     "@types/jest": "^23.3.9",
     "fast-check": "^1.7.1",
+    "husky": "^1.1.4",
     "jest": "^23.6.0",
+    "prettier": "^1.15.2",
     "ts-jest": "^23.10.4",
     "typescript": "^3.1.6"
   },
@@ -30,5 +32,12 @@
       "node"
     ]
   },
-  "devDependencies": {}
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "pretty-quick": "^1.8.0"
+  }
 }
